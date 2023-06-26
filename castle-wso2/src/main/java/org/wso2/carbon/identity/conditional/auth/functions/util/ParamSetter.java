@@ -48,6 +48,7 @@ public class ParamSetter {
     private JsAuthenticationContext context;
     private JsNashornServletRequest request;
     private UniqueIDUserStoreManager uniqueIDUserStoreManager;
+    private String internalUserId = "internalUserId";
     private String userId = "userId";
     private int tenantId = 0;
     private String userEmail = "userEmail";
@@ -103,28 +104,27 @@ public class ParamSetter {
 
     private void setupParameters() {
 
-
         if (context.getContext().getSubject() != null) {
             try {
-                userId = context.getContext().getSubject().getUserId();
+                internalUserId = context.getContext().getSubject().getUserId();
+                userId = context.getContext().getSubject().getAuthenticatedSubjectIdentifier();
             } catch (UserIdNotFoundException e) {
                 LOG.error(ErrorMessageConstants.ERROR_USER_ID);
             }
         }
 
-        this.userAgent = request.getWrapped().getWrapped().getHeader("User-Agent");
-        this.host = request.getWrapped().getWrapped().getHeader("Host");
-        this.ip = IdentityUtil.getClientIpAddress(request.getWrapped().getWrapped());
-        this.tenantId = IdentityTenantUtil.getTenantId(context.getContext().getTenantDomain());
+            this.userAgent = request.getWrapped().getWrapped().getHeader("User-Agent");
+            this.host = request.getWrapped().getWrapped().getHeader("Host");
+            this.ip = IdentityUtil.getClientIpAddress(request.getWrapped().getWrapped());
+            this.tenantId = IdentityTenantUtil.getTenantId(context.getContext().getTenantDomain());
 
         try {
             uniqueIDUserStoreManager = getUniqueIdEnabledUserStoreManager(tenantId);
-            userEmail = uniqueIDUserStoreManager.getUserClaimValueWithID(userId,
+            userEmail = uniqueIDUserStoreManager.getUserClaimValueWithID(internalUserId,
                     "http://wso2.org/claims/emailaddress", null);
         } catch (UserStoreException e) {
             LOG.error(ErrorMessageConstants.ERROR_USER_EMAIL);
         }
-
     }
 
 }
