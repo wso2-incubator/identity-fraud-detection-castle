@@ -26,6 +26,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.identity.application.authentication.framework.config.model.graph.js.JsAuthenticationContext;
 import org.wso2.carbon.identity.application.authentication.framework.config.model.graph.js.nashorn.JsNashornServletRequest;
+import org.wso2.carbon.identity.application.authentication.framework.exception.UserIdNotFoundException;
 import org.wso2.carbon.identity.conditional.auth.functions.constant.ErrorMessageConstants;
 import org.wso2.carbon.identity.conditional.auth.functions.internal.CastleIntegrationDataHolder;
 import org.wso2.carbon.identity.conditional.auth.functions.model.User;
@@ -47,15 +48,16 @@ public class ParamSetter {
     private JsAuthenticationContext context;
     private JsNashornServletRequest request;
     private UniqueIDUserStoreManager uniqueIDUserStoreManager;
-    private static String userId = "userId";
-    private static int tenantId = 0;
-    private static String userEmail = "userEmail";
-    private static String userAgent = "User-Agent";
-    private static String host = "Host";
-    private static String ip = "ip";
+    private String userId = "userId";
+    private int tenantId = 0;
+    private String userEmail = "userEmail";
+    private String userAgent = "User-Agent";
+    private String host = "Host";
+    private String ip = "ip";
     private static final Log LOG = LogFactory.getLog(ParamSetter.class);
 
     public ParamSetter(JsNashornServletRequest request, JsAuthenticationContext context) {
+
         this.context = context;
         this.request = request;
         setupParameters();
@@ -101,16 +103,19 @@ public class ParamSetter {
 
     private void setupParameters() {
 
-        try {
-            userId = context.getContext().getSubject().getUserId();
-        } catch (Exception e) {
-            LOG.error(ErrorMessageConstants.ERROR_USER_ID);
+
+        if (context.getContext().getSubject() != null) {
+            try {
+                userId = context.getContext().getSubject().getUserId();
+            } catch (UserIdNotFoundException e) {
+                LOG.error(ErrorMessageConstants.ERROR_USER_ID);
+            }
         }
 
-            this.userAgent = request.getWrapped().getWrapped().getHeader("User-Agent");
-            this.host = request.getWrapped().getWrapped().getHeader("Host");
-            this.ip = IdentityUtil.getClientIpAddress(request.getWrapped().getWrapped());
-            this.tenantId = IdentityTenantUtil.getTenantId(context.getContext().getTenantDomain());
+        this.userAgent = request.getWrapped().getWrapped().getHeader("User-Agent");
+        this.host = request.getWrapped().getWrapped().getHeader("Host");
+        this.ip = IdentityUtil.getClientIpAddress(request.getWrapped().getWrapped());
+        this.tenantId = IdentityTenantUtil.getTenantId(context.getContext().getTenantDomain());
 
         try {
             uniqueIDUserStoreManager = getUniqueIdEnabledUserStoreManager(tenantId);
