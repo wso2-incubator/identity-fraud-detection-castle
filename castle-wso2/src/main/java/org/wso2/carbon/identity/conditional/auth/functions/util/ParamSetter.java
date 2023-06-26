@@ -55,6 +55,7 @@ public class ParamSetter {
     private String userAgent = "User-Agent";
     private String host = "Host";
     private String ip = "ip";
+    private String requestToken = "requestToken";
     private static final Log LOG = LogFactory.getLog(ParamSetter.class);
 
     public ParamSetter(JsNashornServletRequest request, JsAuthenticationContext context) {
@@ -67,6 +68,11 @@ public class ParamSetter {
     public User getUser() {
 
         return new User(userId, userEmail);
+    }
+
+    public String getRequestToken() {
+
+        return requestToken;
     }
 
     public CastleContext createContext() {
@@ -117,6 +123,8 @@ public class ParamSetter {
             this.host = request.getWrapped().getWrapped().getHeader("Host");
             this.ip = IdentityUtil.getClientIpAddress(request.getWrapped().getWrapped());
             this.tenantId = IdentityTenantUtil.getTenantId(context.getContext().getTenantDomain());
+            this.requestToken = request.getWrapped().getWrapped().getParameterMap()
+                    .get("castleRequestToken")[0];
 
         try {
             uniqueIDUserStoreManager = getUniqueIdEnabledUserStoreManager(tenantId);

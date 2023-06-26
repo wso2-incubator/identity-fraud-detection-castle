@@ -30,8 +30,8 @@ import org.wso2.carbon.identity.conditional.auth.functions.util.ParamSetter;
  */
 public class RiskAnalyzerImpl implements RiskAnalyzer {
 
-    public float getRisk(JsAuthenticationContext context, String successStatus, String apiSecret, String reqToken,
-                        JsNashornServletRequest request) {
+    public float getRisk(JsAuthenticationContext context, String successStatus, String apiSecret,
+                         JsNashornServletRequest request) {
 
         RequestSender requestSender = null;
 
@@ -44,8 +44,12 @@ public class RiskAnalyzerImpl implements RiskAnalyzer {
         ParamSetter paramSetter = new ParamSetter(request, context);
         CastleContext castleContext = paramSetter.createContext();
         User user = paramSetter.getUser();
+        String reqToken = paramSetter.getRequestToken();
         CustomCastleResponse response = requestSender.doRequest(user, reqToken, castleContext, apiSecret);
-        response.displayRiskScores();
+
+        if (response != null) {
+            response.displayRiskScores();
+        }
 
         return response.getRiskScore();
     }
