@@ -46,7 +46,6 @@ public class LoginSuccessRequestSender implements RequestSender {
         try {
             castle = Castle.initialize(Castle.configurationBuilder().apiSecret(apiSecret).withTimeout(1000).build());
         } catch (CastleSdkConfigurationException e) {
-
             LOG.info(ErrorMessageConstants.ERROR_CASTLE_CONFIGURATION);
         }
 

@@ -29,18 +29,19 @@ public class CustomCastleResponse {
 
     private static final Log LOG = LogFactory.getLog(CustomCastleResponse.class);
     CastleResponse response;
-    private float risk;
+    private float riskScore;
     private float accountAbuseScore;
     private float accountTakeoverScore;
     private float botScore;
 
     public CustomCastleResponse(CastleResponse response) {
+
         this.response = response;
         setRiskScores();
     }
 
-    public float getRisk() {
-        return this.risk;
+    public float getRiskScore() {
+        return this.riskScore;
     }
     public float getAccountAbuseScore() {
         return this.accountAbuseScore;
@@ -61,7 +62,7 @@ public class CustomCastleResponse {
             return;
         }
 
-        LOG.info("Risk: " + this.risk);
+        LOG.info("Risk: " + this.riskScore);
         LOG.info("Account Abuse Score: " + this.accountAbuseScore);
         LOG.info("Account Takeover Score: " + this.accountTakeoverScore);
         LOG.info("Bot Score: " + this.botScore);
@@ -69,7 +70,7 @@ public class CustomCastleResponse {
 
     private void setRiskScores() {
 
-        this.risk = response.json().getAsJsonObject().get("risk").getAsFloat();
+        this.riskScore = response.json().getAsJsonObject().get("risk").getAsFloat();
 
         this.accountAbuseScore = response.json().getAsJsonObject().get("scores").getAsJsonObject().get("account_abuse")
                 .getAsJsonObject().get("score").getAsFloat();

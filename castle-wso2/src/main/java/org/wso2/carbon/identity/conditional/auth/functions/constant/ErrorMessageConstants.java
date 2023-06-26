@@ -23,11 +23,11 @@ package org.wso2.carbon.identity.conditional.auth.functions.constant;
  */
 public abstract class ErrorMessageConstants {
 
-    public static final String ERROR_USER_ID = "An error occurred while getting user id";
-    public static final String ERROR_USER_EMAIL = "An error occurred while getting user email";
-    public static final String ERROR_CASTLE_CONFIGURATION = "Castle SDK configuration error";
-    public static final String ERROR_CASTLE_REQUEST_TOKEN = "Invalid Request Token";
-    public static final String ERROR_CASTLE_DATA = "data missing or invalid";
-    public static final String ERROR_GETTING_USER_STORE = "Error while getting user store";
+    public static final String ERROR_USER_ID = "An error occurred while getting user id.";
+    public static final String ERROR_USER_EMAIL = "An error occurred while getting user email.";
+    public static final String ERROR_CASTLE_CONFIGURATION = "Castle SDK configuration error.";
+    public static final String ERROR_CASTLE_REQUEST_TOKEN = "Invalid Request Token.";
+    public static final String ERROR_CASTLE_DATA = "Data missing or invalid.";
+    public static final String ERROR_GETTING_USER_STORE = "Error while getting user store.";
 
 }

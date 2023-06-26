@@ -25,6 +25,7 @@ import org.wso2.carbon.identity.conditional.auth.functions.model.User;
  * Interface for the Castle request sending functions.
  */
 public interface RequestSender {
+
     public CustomCastleResponse doRequest(User user, String castleRequestToken, CastleContext castleContext,
                                           String apiSecret);
 }
