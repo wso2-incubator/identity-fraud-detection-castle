@@ -46,7 +46,7 @@ public class LoginSuccessRequestSender implements RequestSender {
         try {
             castle = Castle.initialize(Castle.configurationBuilder().apiSecret(apiSecret).withTimeout(1000).build());
         } catch (CastleSdkConfigurationException e) {
-            LOG.info(ErrorMessageConstants.ERROR_CASTLE_CONFIGURATION);
+            LOG.info(ErrorMessageConstants.ERROR_CASTLE_CONFIGURATION, e);
         }
 
         try {
@@ -74,9 +74,9 @@ public class LoginSuccessRequestSender implements RequestSender {
             return customCastleResponse;
 
         } catch (CastleApiInvalidRequestTokenException requestTokenException) {
-            LOG.info(ErrorMessageConstants.ERROR_CASTLE_REQUEST_TOKEN);
+            LOG.info(ErrorMessageConstants.ERROR_CASTLE_REQUEST_TOKEN, requestTokenException);
         } catch (CastleRuntimeException runtimeException) {
-            LOG.info(ErrorMessageConstants.ERROR_CASTLE_DATA);
+            LOG.info(ErrorMessageConstants.ERROR_CASTLE_DATA, runtimeException);
         }
 
         return null;

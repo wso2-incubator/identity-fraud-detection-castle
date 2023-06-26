@@ -107,10 +107,10 @@ public class ParamSetter {
         if (context.getContext().getSubject() != null) {
             try {
                 internalUserId = context.getContext().getSubject().getUserId();
-                userId = context.getContext().getSubject().getAuthenticatedSubjectIdentifier();
             } catch (UserIdNotFoundException e) {
-                LOG.error(ErrorMessageConstants.ERROR_USER_ID);
+                LOG.error(ErrorMessageConstants.ERROR_USER_ID, e);
             }
+            userId = context.getContext().getSubject().getAuthenticatedSubjectIdentifier();
         }
 
             this.userAgent = request.getWrapped().getWrapped().getHeader("User-Agent");
@@ -123,7 +123,7 @@ public class ParamSetter {
             userEmail = uniqueIDUserStoreManager.getUserClaimValueWithID(internalUserId,
                     "http://wso2.org/claims/emailaddress", null);
         } catch (UserStoreException e) {
-            LOG.error(ErrorMessageConstants.ERROR_USER_EMAIL);
+            LOG.error(ErrorMessageConstants.ERROR_USER_EMAIL, e);
         }
     }
 
