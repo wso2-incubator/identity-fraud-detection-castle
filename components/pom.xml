@@ -48,43 +48,43 @@
         <dependency>
             <groupId>io.castle</groupId>
             <artifactId>castle-java</artifactId>
-            <version>2.3.1</version>
+            <version>${io.castle.java.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>2.0.0-alpha0</version>
+            <version>${org.slf4j.api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>2.0.0-alpha0</version>
+            <version>${org.slf4j.12.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.threeten</groupId>
             <artifactId>threetenbp</artifactId>
-            <version>1.6.5</version>
+            <version>${org.threeten.version}</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>4.10.0</version>
+            <version>${com.squareup.okhttp3.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
-            <version>1.6.20</version>
+            <version>${org.jetbrains.kotlin.stdlib.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-common</artifactId>
-            <version>1.6.20</version>
+            <version>${org.jetbrains.kotlin.stdlib.common.version}</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.okio</groupId>
             <artifactId>okio</artifactId>
-            <version>3.0.0-alpha.9</version>
+            <version>${com.squareup.okio.version}</version>
         </dependency>
     </dependencies>
 
@@ -215,6 +215,14 @@
         <equinox.osgi.services.version>3.3.100.v20130513-1956</equinox.osgi.services.version>
         <carbon.identity.framework.version>5.25.42</carbon.identity.framework.version>
         <identity.framework.package.import.version.range>[5.14.0, 7.0.0)</identity.framework.package.import.version.range>
+        <io.castle.java.version>2.3.1</io.castle.java.version>
+        <org.slf4j.api.version>2.0.0-alpha0</org.slf4j.api.version>
+        <org.slf4j.12.version>2.0.0-alpha0</org.slf4j.12.version>
+        <org.threeten.version>1.6.5</org.threeten.version>
+        <com.squareup.okhttp3.version>4.10.0</com.squareup.okhttp3.version>
+        <org.jetbrains.kotlin.stdlib.version>1.6.20</org.jetbrains.kotlin.stdlib.version>
+        <org.jetbrains.kotlin.stdlib.common.version>1.6.20</org.jetbrains.kotlin.stdlib.common.version>
+        <com.squareup.okio.version>3.0.0-alpha.9</com.squareup.okio.version>
     </properties>
 </project>
 
