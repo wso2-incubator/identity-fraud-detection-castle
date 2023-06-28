@@ -25,6 +25,7 @@ import io.castle.client.model.CastleContext;
 import io.castle.client.model.CastleResponse;
 import io.castle.client.model.CastleRuntimeException;
 import io.castle.client.model.CastleSdkConfigurationException;
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.RequestParameterConstants;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.model.User;
 
 /**
@@ -48,16 +49,16 @@ public class LoginFailedRequestSender implements RequestSender {
             assert castle != null;
 
             CastleResponse response = castle.client().filter(ImmutableMap.builder()
-                    .put("type", "$login")
-                    .put("status", "$failed")
+                    .put(RequestParameterConstants.KEY_TYPE, RequestParameterConstants.VALUE_LOGIN)
+                    .put(RequestParameterConstants.KEY_STATUS, RequestParameterConstants.VALUE_FAIL)
                     .put(Castle.KEY_CONTEXT, ImmutableMap.builder()
                             .put(Castle.KEY_IP, castleContext.getIp())
                             .put(Castle.KEY_HEADERS, castleContext.getHeaders())
                             .build()
                     )
                     .put(Castle.KEY_USER, ImmutableMap.builder()
-                            .put("id", user.getId())
-                            .put("email", user.getEmail())
+                            .put(RequestParameterConstants.KEY_USER_ID, user.getId())
+                            .put(RequestParameterConstants.KEY_USER_EMAIL, user.getEmail())
                             .build()
                     )
                     .put(Castle.KEY_REQUEST_TOKEN, castleRequestToken)
