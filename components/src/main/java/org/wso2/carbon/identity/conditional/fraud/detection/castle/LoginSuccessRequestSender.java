@@ -25,8 +25,6 @@ import io.castle.client.model.CastleContext;
 import io.castle.client.model.CastleResponse;
 import io.castle.client.model.CastleRuntimeException;
 import io.castle.client.model.CastleSdkConfigurationException;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.model.User;
 
 
