@@ -41,17 +41,21 @@ public class CustomCastleResponse {
     }
 
     public float getRiskScore() {
+
         return this.riskScore;
     }
     public float getAccountAbuseScore() {
+
         return this.accountAbuseScore;
     }
 
     public float getAccountTakeoverScore() {
+
         return this.accountTakeoverScore;
     }
 
     public float getBotScore() {
+
         return this.botScore;
     }
 

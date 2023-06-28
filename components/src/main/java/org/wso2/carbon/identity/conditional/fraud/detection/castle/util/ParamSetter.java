@@ -119,12 +119,12 @@ public class ParamSetter {
             userId = context.getContext().getSubject().getAuthenticatedSubjectIdentifier();
         }
 
-            this.userAgent = request.getWrapped().getWrapped().getHeader("User-Agent");
-            this.host = request.getWrapped().getWrapped().getHeader("Host");
-            this.ip = IdentityUtil.getClientIpAddress(request.getWrapped().getWrapped());
-            this.tenantId = IdentityTenantUtil.getTenantId(context.getContext().getTenantDomain());
-            this.requestToken = request.getWrapped().getWrapped().getParameterMap()
-                    .get("castleRequestToken")[0];
+        this.userAgent = request.getWrapped().getWrapped().getHeader("User-Agent");
+        this.host = request.getWrapped().getWrapped().getHeader("Host");
+        this.ip = IdentityUtil.getClientIpAddress(request.getWrapped().getWrapped());
+        this.tenantId = IdentityTenantUtil.getTenantId(context.getContext().getTenantDomain());
+        this.requestToken = request.getWrapped().getWrapped().getParameterMap()
+                .get("castleRequestToken")[0];
 
         try {
             uniqueIDUserStoreManager = getUniqueIdEnabledUserStoreManager(tenantId);

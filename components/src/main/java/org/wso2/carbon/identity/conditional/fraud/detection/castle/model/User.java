@@ -27,15 +27,18 @@ public class User {
     private String email;
 
     public User(String id, String email) {
+
         this.id = id;
         this.email = email;
     }
 
     public String getId() {
+
         return this.id;
     }
 
     public String getEmail() {
+
         return this.email;
     }
 

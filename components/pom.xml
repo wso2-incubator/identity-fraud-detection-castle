@@ -208,11 +208,9 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
         <osgi.service.component.imp.pkg.version.range>[1.2.0, 2.0.0)</osgi.service.component.imp.pkg.version.range>
         <commons.logging.version>1.2</commons.logging.version>
         <commons-logging.osgi.version.range>[1.2.0, 2.0.0)</commons-logging.osgi.version.range>
-
         <maven.checkstyleplugin.version>3.1.0</maven.checkstyleplugin.version>
         <equinox.osgi.services.version>3.3.100.v20130513-1956</equinox.osgi.services.version>
         <carbon.identity.framework.version>5.25.42</carbon.identity.framework.version>

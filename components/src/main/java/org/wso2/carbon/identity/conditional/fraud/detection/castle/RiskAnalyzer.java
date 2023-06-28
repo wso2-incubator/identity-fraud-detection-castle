@@ -30,4 +30,5 @@ public interface RiskAnalyzer {
 
     float getRisk(JsAuthenticationContext context, String successStatus, String apiSecret,
                   JsNashornServletRequest request);
+
 }
