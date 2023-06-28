@@ -18,9 +18,15 @@
 
 package org.wso2.carbon.identity.conditional.fraud.detection.castle;
 
+import io.castle.client.model.CastleApiInvalidRequestTokenException;
 import io.castle.client.model.CastleContext;
+import io.castle.client.model.CastleRuntimeException;
+import io.castle.client.model.CastleSdkConfigurationException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.identity.application.authentication.framework.config.model.graph.js.JsAuthenticationContext;
 import org.wso2.carbon.identity.application.authentication.framework.config.model.graph.js.nashorn.JsNashornServletRequest;
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.ErrorMessageConstants;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.model.User;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.util.ParamSetter;
 
@@ -29,6 +35,8 @@ import org.wso2.carbon.identity.conditional.fraud.detection.castle.util.ParamSet
  * Interface for the Castle login authentication functions.
  */
 public class RiskAnalyzerImpl implements RiskAnalyzer {
+
+    private static final Log LOG = LogFactory.getLog(RiskAnalyzerImpl.class);
 
     public float getRisk(JsAuthenticationContext context, String successStatus, String apiSecret,
                          JsNashornServletRequest request) {
@@ -45,13 +53,25 @@ public class RiskAnalyzerImpl implements RiskAnalyzer {
         CastleContext castleContext = paramSetter.createContext();
         User user = paramSetter.getUser();
         String reqToken = paramSetter.getRequestToken();
-        CustomCastleResponse response = requestSender.doRequest(user, reqToken, castleContext, apiSecret);
 
-        if (response != null) {
-            response.displayRiskScores();
+        try {
+
+            CustomCastleResponse response = requestSender.doRequest(user, reqToken, castleContext, apiSecret);
+
+            if (response != null) {
+                response.displayRiskScores();
+                return response.getRiskScore();
+            }
+
+        } catch (CastleSdkConfigurationException e) {
+            LOG.error(ErrorMessageConstants.ERROR_CASTLE_CONFIGURATION, e);
+        } catch (CastleApiInvalidRequestTokenException e) {
+            LOG.error(ErrorMessageConstants.ERROR_CASTLE_REQUEST_TOKEN, e);
+        } catch (CastleRuntimeException e) {
+            LOG.error(ErrorMessageConstants.ERROR_CASTLE_DATA, e);
         }
 
-        return response.getRiskScore();
+        return 0;
     }
 
 }

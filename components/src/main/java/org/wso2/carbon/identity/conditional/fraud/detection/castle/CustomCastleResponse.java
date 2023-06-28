@@ -45,6 +45,7 @@ public class CustomCastleResponse {
 
         return this.riskScore;
     }
+
     public float getAccountAbuseScore() {
 
         return this.accountAbuseScore;

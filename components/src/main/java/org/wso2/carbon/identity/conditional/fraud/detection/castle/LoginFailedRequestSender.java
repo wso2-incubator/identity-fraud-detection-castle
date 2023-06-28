@@ -27,7 +27,6 @@ import io.castle.client.model.CastleRuntimeException;
 import io.castle.client.model.CastleSdkConfigurationException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.ErrorMessageConstants;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.model.User;
 
 /**
@@ -38,14 +37,15 @@ public class LoginFailedRequestSender implements RequestSender {
     private static final Log LOG = LogFactory.getLog(LoginFailedRequestSender.class);
 
     public CustomCastleResponse doRequest(User user, String castleRequestToken, CastleContext castleContext,
-                                          String apiSecret) {
+                                          String apiSecret) throws CastleSdkConfigurationException,
+                                          CastleApiInvalidRequestTokenException, CastleRuntimeException {
 
         Castle castle = null;
 
         try {
             castle = Castle.initialize(Castle.configurationBuilder().apiSecret(apiSecret).withTimeout(1000).build());
         } catch (CastleSdkConfigurationException e) {
-            LOG.error(ErrorMessageConstants.ERROR_CASTLE_CONFIGURATION, e);
+            throw e;
         }
 
         try {
@@ -73,12 +73,11 @@ public class LoginFailedRequestSender implements RequestSender {
             return customCastleResponse;
 
         } catch (CastleApiInvalidRequestTokenException requestTokenException) {
-            LOG.error(ErrorMessageConstants.ERROR_CASTLE_REQUEST_TOKEN, requestTokenException);
+            throw requestTokenException;
         } catch (CastleRuntimeException runtimeException) {
-            LOG.error(ErrorMessageConstants.ERROR_CASTLE_DATA, runtimeException);
+            throw runtimeException;
         }
 
-        return null;
     }
 
 }

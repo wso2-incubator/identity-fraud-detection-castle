@@ -18,7 +18,10 @@
 
 package org.wso2.carbon.identity.conditional.fraud.detection.castle;
 
+import io.castle.client.model.CastleApiInvalidRequestTokenException;
 import io.castle.client.model.CastleContext;
+import io.castle.client.model.CastleRuntimeException;
+import io.castle.client.model.CastleSdkConfigurationException;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.model.User;
 
 /**
@@ -27,7 +30,8 @@ import org.wso2.carbon.identity.conditional.fraud.detection.castle.model.User;
 public interface RequestSender {
 
     public CustomCastleResponse doRequest(User user, String castleRequestToken, CastleContext castleContext,
-                                          String apiSecret);
+                                          String apiSecret) throws CastleSdkConfigurationException,
+                                          CastleApiInvalidRequestTokenException, CastleRuntimeException;
 
 }
 
