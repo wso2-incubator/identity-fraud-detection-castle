@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.carbon.identity.conditional.auth.functions;
+package org.wso2.carbon.identity.conditional.fraud.detection.castle;
 
 import com.google.common.collect.ImmutableMap;
 import io.castle.client.Castle;
@@ -27,16 +27,15 @@ import io.castle.client.model.CastleRuntimeException;
 import io.castle.client.model.CastleSdkConfigurationException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.wso2.carbon.identity.conditional.auth.functions.constant.ErrorMessageConstants;
-import org.wso2.carbon.identity.conditional.auth.functions.model.User;
-
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.ErrorMessageConstants;
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.model.User;
 
 /**
- * Class with the Castle request sending functionality for a successful login.
+ * Class with the Castle request sending functionality for a failed login.
  */
-public class LoginSuccessRequestSender implements RequestSender {
+public class LoginFailedRequestSender implements RequestSender {
 
-    private static final Log LOG = LogFactory.getLog(LoginSuccessRequestSender.class);
+    private static final Log LOG = LogFactory.getLog(LoginFailedRequestSender.class);
 
     public CustomCastleResponse doRequest(User user, String castleRequestToken, CastleContext castleContext,
                                           String apiSecret) {
@@ -52,21 +51,21 @@ public class LoginSuccessRequestSender implements RequestSender {
         try {
             assert castle != null;
 
-            CastleResponse response = castle.client().risk(ImmutableMap.builder()
-                            .put("type", "$login")
-                            .put("status", "$succeeded")
-                            .put(Castle.KEY_CONTEXT, ImmutableMap.builder()
-                                    .put(Castle.KEY_IP, castleContext.getIp())
-                                    .put(Castle.KEY_HEADERS, castleContext.getHeaders())
-                                    .build()
-                            )
-                            .put(Castle.KEY_USER, ImmutableMap.builder()
-                                    .put("id", user.getId())
-                                    .put("email", user.getEmail())
-                                    .build()
-                            )
-                            .put(Castle.KEY_REQUEST_TOKEN, castleRequestToken)
+            CastleResponse response = castle.client().filter(ImmutableMap.builder()
+                    .put("type", "$login")
+                    .put("status", "$failed")
+                    .put(Castle.KEY_CONTEXT, ImmutableMap.builder()
+                            .put(Castle.KEY_IP, castleContext.getIp())
+                            .put(Castle.KEY_HEADERS, castleContext.getHeaders())
                             .build()
+                    )
+                    .put(Castle.KEY_USER, ImmutableMap.builder()
+                            .put("id", user.getId())
+                            .put("email", user.getEmail())
+                            .build()
+                    )
+                    .put(Castle.KEY_REQUEST_TOKEN, castleRequestToken)
+                    .build()
             );
 
             CustomCastleResponse customCastleResponse = new CustomCastleResponse(response);

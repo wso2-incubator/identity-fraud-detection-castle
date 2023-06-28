@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.carbon.identity.conditional.auth.functions.constant;
+package org.wso2.carbon.identity.conditional.fraud.detection.castle.constant;
 
 /**
  * Constants used in Error Messages.

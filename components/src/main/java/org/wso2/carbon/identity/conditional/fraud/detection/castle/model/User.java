@@ -16,18 +16,27 @@
  * under the License.
  */
 
-package org.wso2.carbon.identity.conditional.auth.functions;
-
-import org.wso2.carbon.identity.application.authentication.framework.config.model.graph.js.JsAuthenticationContext;
-import org.wso2.carbon.identity.application.authentication.framework.config.model.graph.js.nashorn.JsNashornServletRequest;
-
+package org.wso2.carbon.identity.conditional.fraud.detection.castle.model;
 
 /**
- * Interface for the Castle login authentication functions.
+ * The POJO class for the User.
  */
-@FunctionalInterface
-public interface RiskAnalyzer {
+public class User {
 
-    float getRisk(JsAuthenticationContext context, String successStatus, String apiSecret,
-                  JsNashornServletRequest request);
+    private String id;
+    private String email;
+
+    public User(String id, String email) {
+        this.id = id;
+        this.email = email;
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
 }

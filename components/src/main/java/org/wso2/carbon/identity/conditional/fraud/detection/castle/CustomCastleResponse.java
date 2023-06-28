@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.carbon.identity.conditional.auth.functions;
+package org.wso2.carbon.identity.conditional.fraud.detection.castle;
 
 import io.castle.client.model.CastleResponse;
 import org.apache.commons.logging.Log;

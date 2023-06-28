@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.carbon.identity.conditional.auth.functions.internal;
+package org.wso2.carbon.identity.conditional.fraud.detection.castle.internal;
 
 import org.wso2.carbon.identity.application.authentication.framework.JsFunctionRegistry;
 import org.wso2.carbon.user.core.service.RealmService;

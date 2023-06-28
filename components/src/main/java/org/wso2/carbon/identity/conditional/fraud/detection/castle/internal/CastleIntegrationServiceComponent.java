@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.carbon.identity.conditional.auth.functions.internal;
+package org.wso2.carbon.identity.conditional.fraud.detection.castle.internal;
 
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
@@ -26,8 +26,8 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.wso2.carbon.identity.application.authentication.framework.JsFunctionRegistry;
-import org.wso2.carbon.identity.conditional.auth.functions.RiskAnalyzer;
-import org.wso2.carbon.identity.conditional.auth.functions.RiskAnalyzerImpl;
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.RiskAnalyzer;
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.RiskAnalyzerImpl;
 import org.wso2.carbon.user.core.service.RealmService;
 
 /**
@@ -35,7 +35,7 @@ import org.wso2.carbon.user.core.service.RealmService;
  * integration authentication functions.
  */
 @Component(
-        name = "org.wso2.carbon.identity.conditional.auth.functions.component",
+        name = "org.wso2.carbon.identity.conditional.fraud.detection.castle.component",
         immediate = true
 )
 public class CastleIntegrationServiceComponent {

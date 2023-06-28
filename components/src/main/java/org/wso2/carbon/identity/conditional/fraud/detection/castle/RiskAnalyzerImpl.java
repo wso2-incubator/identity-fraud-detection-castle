@@ -16,13 +16,13 @@
  * under the License.
  */
 
-package org.wso2.carbon.identity.conditional.auth.functions;
+package org.wso2.carbon.identity.conditional.fraud.detection.castle;
 
 import io.castle.client.model.CastleContext;
 import org.wso2.carbon.identity.application.authentication.framework.config.model.graph.js.JsAuthenticationContext;
 import org.wso2.carbon.identity.application.authentication.framework.config.model.graph.js.nashorn.JsNashornServletRequest;
-import org.wso2.carbon.identity.conditional.auth.functions.model.User;
-import org.wso2.carbon.identity.conditional.auth.functions.util.ParamSetter;
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.model.User;
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.util.ParamSetter;
 
 
 /**

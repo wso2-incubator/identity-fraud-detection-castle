@@ -16,27 +16,16 @@
  * under the License.
  */
 
-package org.wso2.carbon.identity.conditional.auth.functions.model;
+package org.wso2.carbon.identity.conditional.fraud.detection.castle;
+
+import io.castle.client.model.CastleContext;
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.model.User;
 
 /**
- * The POJO class for the User.
+ * Interface for the Castle request sending functions.
  */
-public class User {
+public interface RequestSender {
 
-    private String id;
-    private String email;
-
-    public User(String id, String email) {
-        this.id = id;
-        this.email = email;
-    }
-
-    public String getId() {
-        return this.id;
-    }
-
-    public String getEmail() {
-        return this.email;
-    }
-
+    public CustomCastleResponse doRequest(User user, String castleRequestToken, CastleContext castleContext,
+                                          String apiSecret);
 }

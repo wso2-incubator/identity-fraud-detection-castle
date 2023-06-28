@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.carbon.identity.conditional.auth.functions.util;
+package org.wso2.carbon.identity.conditional.fraud.detection.castle.util;
 
 import io.castle.client.internal.utils.CastleContextBuilder;
 import io.castle.client.model.CastleContext;
@@ -27,9 +27,9 @@ import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.identity.application.authentication.framework.config.model.graph.js.JsAuthenticationContext;
 import org.wso2.carbon.identity.application.authentication.framework.config.model.graph.js.nashorn.JsNashornServletRequest;
 import org.wso2.carbon.identity.application.authentication.framework.exception.UserIdNotFoundException;
-import org.wso2.carbon.identity.conditional.auth.functions.constant.ErrorMessageConstants;
-import org.wso2.carbon.identity.conditional.auth.functions.internal.CastleIntegrationDataHolder;
-import org.wso2.carbon.identity.conditional.auth.functions.model.User;
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.ErrorMessageConstants;
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.internal.CastleIntegrationDataHolder;
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.model.User;
 import org.wso2.carbon.identity.core.util.IdentityTenantUtil;
 import org.wso2.carbon.identity.core.util.IdentityUtil;
 import org.wso2.carbon.user.api.UserStoreException;

@@ -16,16 +16,18 @@
  * under the License.
  */
 
-package org.wso2.carbon.identity.conditional.auth.functions;
+package org.wso2.carbon.identity.conditional.fraud.detection.castle;
 
-import io.castle.client.model.CastleContext;
-import org.wso2.carbon.identity.conditional.auth.functions.model.User;
+import org.wso2.carbon.identity.application.authentication.framework.config.model.graph.js.JsAuthenticationContext;
+import org.wso2.carbon.identity.application.authentication.framework.config.model.graph.js.nashorn.JsNashornServletRequest;
+
 
 /**
- * Interface for the Castle request sending functions.
+ * Interface for the Castle login authentication functions.
  */
-public interface RequestSender {
+@FunctionalInterface
+public interface RiskAnalyzer {
 
-    public CustomCastleResponse doRequest(User user, String castleRequestToken, CastleContext castleContext,
-                                          String apiSecret);
+    float getRisk(JsAuthenticationContext context, String successStatus, String apiSecret,
+                  JsNashornServletRequest request);
 }
