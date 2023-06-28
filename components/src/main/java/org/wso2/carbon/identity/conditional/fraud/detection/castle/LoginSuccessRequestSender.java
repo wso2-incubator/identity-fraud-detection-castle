@@ -44,11 +44,7 @@ public class LoginSuccessRequestSender implements RequestSender {
         try {
             castle = Castle.initialize(Castle.configurationBuilder().apiSecret(apiSecret)
                     .withTimeout(CastleInitializeConstants.CASTLE_INITIALIZE_TIMEOUT).build());
-        } catch (CastleSdkConfigurationException e) {
-            throw e;
-        }
 
-        try {
             assert castle != null;
 
             CastleResponse response = castle.client().risk(ImmutableMap.builder()
@@ -71,11 +67,12 @@ public class LoginSuccessRequestSender implements RequestSender {
             CustomCastleResponse customCastleResponse = new CustomCastleResponse(response);
 
             return customCastleResponse;
-
-        } catch (CastleApiInvalidRequestTokenException requestTokenException) {
-            throw requestTokenException;
-        } catch (CastleRuntimeException runtimeException) {
-            throw runtimeException;
+        } catch (CastleSdkConfigurationException e) {
+            throw e;
+        } catch (CastleApiInvalidRequestTokenException e) {
+            throw e;
+        } catch (CastleRuntimeException e) {
+            throw e;
         }
 
     }
