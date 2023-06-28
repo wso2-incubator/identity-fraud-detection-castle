@@ -35,8 +35,6 @@ import org.wso2.carbon.identity.conditional.fraud.detection.castle.model.User;
  */
 public class LoginSuccessRequestSender implements RequestSender {
 
-    private static final Log LOG = LogFactory.getLog(LoginSuccessRequestSender.class);
-
     public CustomCastleResponse doRequest(User user, String castleRequestToken, CastleContext castleContext,
                                           String apiSecret) throws CastleSdkConfigurationException,
                                           CastleApiInvalidRequestTokenException, CastleRuntimeException {
