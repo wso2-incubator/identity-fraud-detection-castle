@@ -129,7 +129,6 @@
                             !org.wso2.carbon.identity.conditional.fraud.detection.castle.internal,
                             org.wso2.carbon.identity.conditional.fraud.detection.castle.*;
                         </Export-Package>
-
                         <Import-Package>
                             org.osgi.service.component; version="${osgi.service.component.imp.pkg.version.range}",
                             org.apache.commons.logging; version="${commons-logging.osgi.version.range}",
