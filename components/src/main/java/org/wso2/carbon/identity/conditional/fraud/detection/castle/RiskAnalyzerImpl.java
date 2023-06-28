@@ -55,3 +55,4 @@ public class RiskAnalyzerImpl implements RiskAnalyzer {
     }
 
 }
+

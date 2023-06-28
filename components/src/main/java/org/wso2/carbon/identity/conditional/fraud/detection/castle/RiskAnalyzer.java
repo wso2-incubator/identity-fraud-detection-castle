@@ -32,3 +32,4 @@ public interface RiskAnalyzer {
                   JsNashornServletRequest request);
 
 }
+

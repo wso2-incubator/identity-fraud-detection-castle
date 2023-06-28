@@ -89,3 +89,4 @@ public class CastleIntegrationServiceComponent {
         CastleIntegrationDataHolder.getInstance().setRealmService(null);
     }
 }
+
