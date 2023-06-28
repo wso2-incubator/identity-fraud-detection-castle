@@ -21,6 +21,7 @@ package org.wso2.carbon.identity.conditional.fraud.detection.castle;
 import io.castle.client.model.CastleResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.ErrorMessageConstants;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.ScoreConstants;
 
 /**
@@ -64,7 +65,7 @@ public class CustomCastleResponse {
     public void displayRiskScores() {
 
         if (this.response == null) {
-            LOG.info(ScoreConstants.RESPONSE_NULL_MESSAGE);
+            LOG.error(ErrorMessageConstants.RESPONSE_NULL_MESSAGE);
 
             return;
         }

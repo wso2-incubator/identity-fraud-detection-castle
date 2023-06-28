@@ -29,6 +29,7 @@ public abstract class ErrorMessageConstants {
     public static final String ERROR_CASTLE_REQUEST_TOKEN = "Invalid Request Token.";
     public static final String ERROR_CASTLE_DATA = "Data missing or invalid.";
     public static final String ERROR_GETTING_USER_STORE = "Error while getting user store.";
+    public static final String RESPONSE_NULL_MESSAGE = "Castle response is null.";
 
 }
 
