@@ -27,9 +27,13 @@ public abstract class RequestParameterConstants {
     public static final String KEY_STATUS = "status";
     public static final String KEY_USER_ID = "id";
     public static final String KEY_USER_EMAIL = "email";
+    public static final String KEY_USER_AGENT = "User-Agent";
+    public static final String KEY_HOSTNAME = "Host";
+    public static final String KEY_CASTLE_REQUEST_TOKEN = "castleRequestToken";
     public static final String VALUE_LOGIN = "$login";
     public static final String VALUE_SUCCESS = "$succeeded";
     public static final String VALUE_FAIL = "$failed";
+    public static final String URL_USER_STORE_EMAIL = "http://wso2.org/claims/emailaddress";
 
 }
 
