@@ -21,6 +21,7 @@ package org.wso2.carbon.identity.conditional.fraud.detection.castle;
 import io.castle.client.model.CastleResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.ScoreConstants;
 
 /**
  * The POJO class for the response from castle API.
@@ -62,28 +63,32 @@ public class CustomCastleResponse {
     public void displayRiskScores() {
 
         if (this.response == null) {
-            LOG.info("Castle response is null");
+            LOG.info(ScoreConstants.RESPONSE_NULL_MESSAGE);
+
             return;
         }
 
-        LOG.info("Risk: " + this.riskScore);
-        LOG.info("Account Abuse Score: " + this.accountAbuseScore);
-        LOG.info("Account Takeover Score: " + this.accountTakeoverScore);
-        LOG.info("Bot Score: " + this.botScore);
+        LOG.info(ScoreConstants.RISK_DISPLAY_NAME + this.riskScore);
+        LOG.info(ScoreConstants.ACCOUNT_ABUSE_DISPLAY_NAME + this.accountAbuseScore);
+        LOG.info(ScoreConstants.ACCOUNT_TAKEOVER_DISPLAY_NAME + this.accountTakeoverScore);
+        LOG.info(ScoreConstants.BOT_DISPLAY_NAME + this.botScore);
     }
 
     private void setRiskScores() {
 
-        this.riskScore = response.json().getAsJsonObject().get("risk").getAsFloat();
+        this.riskScore = response.json().getAsJsonObject().get(ScoreConstants.RISK_SCORE_KEY).getAsFloat();
 
-        this.accountAbuseScore = response.json().getAsJsonObject().get("scores").getAsJsonObject().get("account_abuse")
-                .getAsJsonObject().get("score").getAsFloat();
+        this.accountAbuseScore = response.json().getAsJsonObject().get(ScoreConstants.DETAILED_SCORES_INITIAL_KEY)
+                .getAsJsonObject().get(ScoreConstants.ACCOUNT_ABUSE_KEY).getAsJsonObject()
+                .get(ScoreConstants.DETAILED_SCORES_FINAL_KEY).getAsFloat();
 
-        this.accountTakeoverScore = response.json().getAsJsonObject().get("scores").getAsJsonObject()
-                .get("account_takeover").getAsJsonObject().get("score").getAsFloat();
+        this.accountTakeoverScore = response.json().getAsJsonObject().get(ScoreConstants.DETAILED_SCORES_INITIAL_KEY)
+                .getAsJsonObject().get(ScoreConstants.ACCOUNT_TAKEOVER_KEY).getAsJsonObject()
+                .get(ScoreConstants.DETAILED_SCORES_FINAL_KEY).getAsFloat();
 
-        this.botScore = response.json().getAsJsonObject().get("scores").getAsJsonObject().get("bot").getAsJsonObject()
-                .get("score").getAsFloat();
+        this.botScore = response.json().getAsJsonObject().get(ScoreConstants.DETAILED_SCORES_INITIAL_KEY)
+                .getAsJsonObject().get(ScoreConstants.BOT_KEY).getAsJsonObject()
+                .get(ScoreConstants.DETAILED_SCORES_FINAL_KEY).getAsFloat();
     }
 
 }
