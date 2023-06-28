@@ -25,7 +25,8 @@ import io.castle.client.model.CastleContext;
 import io.castle.client.model.CastleResponse;
 import io.castle.client.model.CastleRuntimeException;
 import io.castle.client.model.CastleSdkConfigurationException;
-import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.RequestParameterConstants;
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.CastleInitializeConstants;
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.RequestConstants;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.model.User;
 
 
@@ -41,7 +42,8 @@ public class LoginSuccessRequestSender implements RequestSender {
         Castle castle = null;
 
         try {
-            castle = Castle.initialize(Castle.configurationBuilder().apiSecret(apiSecret).withTimeout(1000).build());
+            castle = Castle.initialize(Castle.configurationBuilder().apiSecret(apiSecret)
+                    .withTimeout(CastleInitializeConstants.CASTLE_INITIALIZE_TIMEOUT).build());
         } catch (CastleSdkConfigurationException e) {
             throw e;
         }
@@ -50,16 +52,16 @@ public class LoginSuccessRequestSender implements RequestSender {
             assert castle != null;
 
             CastleResponse response = castle.client().risk(ImmutableMap.builder()
-                            .put(RequestParameterConstants.KEY_TYPE, RequestParameterConstants.VALUE_LOGIN)
-                            .put(RequestParameterConstants.KEY_STATUS, RequestParameterConstants.VALUE_SUCCESS)
+                            .put(RequestConstants.KEY_TYPE, RequestConstants.VALUE_LOGIN)
+                            .put(RequestConstants.KEY_STATUS, RequestConstants.VALUE_SUCCESS)
                             .put(Castle.KEY_CONTEXT, ImmutableMap.builder()
                                     .put(Castle.KEY_IP, castleContext.getIp())
                                     .put(Castle.KEY_HEADERS, castleContext.getHeaders())
                                     .build()
                             )
                             .put(Castle.KEY_USER, ImmutableMap.builder()
-                                    .put(RequestParameterConstants.KEY_USER_ID, user.getId())
-                                    .put(RequestParameterConstants.KEY_USER_EMAIL, user.getEmail())
+                                    .put(RequestConstants.KEY_USER_ID, user.getId())
+                                    .put(RequestConstants.KEY_USER_EMAIL, user.getEmail())
                                     .build()
                             )
                             .put(Castle.KEY_REQUEST_TOKEN, castleRequestToken)

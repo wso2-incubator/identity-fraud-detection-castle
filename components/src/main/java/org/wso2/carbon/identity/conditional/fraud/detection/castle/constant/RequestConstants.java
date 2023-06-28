@@ -21,7 +21,7 @@ package org.wso2.carbon.identity.conditional.fraud.detection.castle.constant;
 /**
  * Constants used to do requests using Castle SDK.
  */
-public abstract class RequestParameterConstants {
+public abstract class RequestConstants {
 
     public static final String KEY_TYPE = "type";
     public static final String KEY_STATUS = "status";

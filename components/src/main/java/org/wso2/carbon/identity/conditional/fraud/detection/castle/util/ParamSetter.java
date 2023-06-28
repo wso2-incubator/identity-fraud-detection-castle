@@ -28,7 +28,7 @@ import org.wso2.carbon.identity.application.authentication.framework.config.mode
 import org.wso2.carbon.identity.application.authentication.framework.config.model.graph.js.nashorn.JsNashornServletRequest;
 import org.wso2.carbon.identity.application.authentication.framework.exception.UserIdNotFoundException;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.ErrorMessageConstants;
-import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.RequestParameterConstants;
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.RequestConstants;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.internal.CastleIntegrationDataHolder;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.model.User;
 import org.wso2.carbon.identity.core.util.IdentityTenantUtil;
@@ -84,8 +84,8 @@ public class ParamSetter {
         contextBuilder = contextBuilder.ip(this.ip);
 
         //set headers
-        CastleHeader castleHeader1 = new CastleHeader(RequestParameterConstants.KEY_USER_AGENT, this.userAgent);
-        CastleHeader castleHeader2 = new CastleHeader(RequestParameterConstants.KEY_HOSTNAME, this.host);
+        CastleHeader castleHeader1 = new CastleHeader(RequestConstants.KEY_USER_AGENT, this.userAgent);
+        CastleHeader castleHeader2 = new CastleHeader(RequestConstants.KEY_HOSTNAME, this.host);
         List<CastleHeader> headers = new ArrayList<>();
         headers.add(castleHeader1);
         headers.add(castleHeader2);
@@ -120,21 +120,21 @@ public class ParamSetter {
             userId = context.getContext().getSubject().getAuthenticatedSubjectIdentifier();
         }
 
-        this.userAgent = request.getWrapped().getWrapped().getHeader(RequestParameterConstants.KEY_USER_AGENT);
-        this.host = request.getWrapped().getWrapped().getHeader(RequestParameterConstants.KEY_HOSTNAME);
+        this.userAgent = request.getWrapped().getWrapped().getHeader(RequestConstants.KEY_USER_AGENT);
+        this.host = request.getWrapped().getWrapped().getHeader(RequestConstants.KEY_HOSTNAME);
         this.ip = IdentityUtil.getClientIpAddress(request.getWrapped().getWrapped());
         this.tenantId = IdentityTenantUtil.getTenantId(context.getContext().getTenantDomain());
 
         if (request.getWrapped().getWrapped().getParameterMap()
-                .get(RequestParameterConstants.KEY_CASTLE_REQUEST_TOKEN) != null) {
+                .get(RequestConstants.KEY_CASTLE_REQUEST_TOKEN) != null) {
             this.requestToken = request.getWrapped().getWrapped().getParameterMap()
-                    .get(RequestParameterConstants.KEY_CASTLE_REQUEST_TOKEN)[0];
+                    .get(RequestConstants.KEY_CASTLE_REQUEST_TOKEN)[0];
         }
 
         try {
             uniqueIDUserStoreManager = getUniqueIdEnabledUserStoreManager(tenantId);
             userEmail = uniqueIDUserStoreManager.getUserClaimValueWithID(internalUserId,
-                    RequestParameterConstants.URL_USER_STORE_EMAIL, null);
+                    RequestConstants.URL_USER_STORE_EMAIL, null);
         } catch (UserStoreException e) {
             LOG.error(ErrorMessageConstants.ERROR_USER_EMAIL, e);
         }
