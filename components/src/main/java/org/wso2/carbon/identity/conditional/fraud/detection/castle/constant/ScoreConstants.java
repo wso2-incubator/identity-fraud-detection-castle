@@ -23,12 +23,12 @@ package org.wso2.carbon.identity.conditional.fraud.detection.castle.constant;
  */
 public abstract class ScoreConstants {
 
-    public static final String RISK_SCORE_KEY = "risk";
-    public static final String DETAILED_SCORES_INITIAL_KEY = "scores";
-    public static final String DETAILED_SCORES_FINAL_KEY = "score";
-    public static final String ACCOUNT_ABUSE_KEY = "account_abuse";
-    public static final String ACCOUNT_TAKEOVER_KEY = "account_takeover";
-    public static final String BOT_KEY = "bot";
+    public static final String KEY_RISK_SCORE = "risk";
+    public static final String KEY_DETAILED_SCORES_INITIAL = "scores";
+    public static final String KEY_DETAILED_SCORES_FINAL = "score";
+    public static final String KEY_ACCOUNT_ABUSE = "account_abuse";
+    public static final String KEY_ACCOUNT_TAKEOVER = "account_takeover";
+    public static final String KEY_BOT = "bot";
 
     public static final String RISK_DISPLAY_NAME = "Risk: ";
     public static final String ACCOUNT_ABUSE_DISPLAY_NAME = "Account Abuse Risk Score: ";

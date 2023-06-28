@@ -77,19 +77,19 @@ public class CustomCastleResponse {
 
     private void setRiskScores() {
 
-        this.riskScore = response.json().getAsJsonObject().get(ScoreConstants.RISK_SCORE_KEY).getAsFloat();
+        this.riskScore = response.json().getAsJsonObject().get(ScoreConstants.KEY_RISK_SCORE).getAsFloat();
 
-        this.accountAbuseScore = response.json().getAsJsonObject().get(ScoreConstants.DETAILED_SCORES_INITIAL_KEY)
-                .getAsJsonObject().get(ScoreConstants.ACCOUNT_ABUSE_KEY).getAsJsonObject()
-                .get(ScoreConstants.DETAILED_SCORES_FINAL_KEY).getAsFloat();
+        this.accountAbuseScore = response.json().getAsJsonObject().get(ScoreConstants.KEY_DETAILED_SCORES_INITIAL)
+                .getAsJsonObject().get(ScoreConstants.KEY_ACCOUNT_ABUSE).getAsJsonObject()
+                .get(ScoreConstants.KEY_DETAILED_SCORES_FINAL).getAsFloat();
 
-        this.accountTakeoverScore = response.json().getAsJsonObject().get(ScoreConstants.DETAILED_SCORES_INITIAL_KEY)
-                .getAsJsonObject().get(ScoreConstants.ACCOUNT_TAKEOVER_KEY).getAsJsonObject()
-                .get(ScoreConstants.DETAILED_SCORES_FINAL_KEY).getAsFloat();
+        this.accountTakeoverScore = response.json().getAsJsonObject().get(ScoreConstants.KEY_DETAILED_SCORES_INITIAL)
+                .getAsJsonObject().get(ScoreConstants.KEY_ACCOUNT_TAKEOVER).getAsJsonObject()
+                .get(ScoreConstants.KEY_DETAILED_SCORES_FINAL).getAsFloat();
 
-        this.botScore = response.json().getAsJsonObject().get(ScoreConstants.DETAILED_SCORES_INITIAL_KEY)
-                .getAsJsonObject().get(ScoreConstants.BOT_KEY).getAsJsonObject()
-                .get(ScoreConstants.DETAILED_SCORES_FINAL_KEY).getAsFloat();
+        this.botScore = response.json().getAsJsonObject().get(ScoreConstants.KEY_DETAILED_SCORES_INITIAL)
+                .getAsJsonObject().get(ScoreConstants.KEY_BOT).getAsJsonObject()
+                .get(ScoreConstants.KEY_DETAILED_SCORES_FINAL).getAsFloat();
     }
 
 }
