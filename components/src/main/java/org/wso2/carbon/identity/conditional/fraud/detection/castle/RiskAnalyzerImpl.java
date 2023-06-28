@@ -38,8 +38,8 @@ public class RiskAnalyzerImpl implements RiskAnalyzer {
 
     private static final Log LOG = LogFactory.getLog(RiskAnalyzerImpl.class);
 
-    public float getRisk(JsAuthenticationContext context, String successStatus, String apiSecret,
-                         JsNashornServletRequest request) {
+    public float getRiskFromCastle(JsAuthenticationContext context, String successStatus, String apiSecret,
+                                   JsNashornServletRequest request) {
 
         RequestSender requestSender = null;
 

@@ -43,9 +43,9 @@ public class CastleIntegrationServiceComponent {
     @Activate
     protected void activate(ComponentContext context) {
 
-        RiskAnalyzer getRisk = new RiskAnalyzerImpl();
+        RiskAnalyzer getRiskFromCastle = new RiskAnalyzerImpl();
         CastleIntegrationDataHolder.getInstance().getJsFunctionRegistry().register(
-                JsFunctionRegistry.Subsystem.SEQUENCE_HANDLER, "getRisk", getRisk);
+                JsFunctionRegistry.Subsystem.SEQUENCE_HANDLER, "getRiskFromCastle", getRiskFromCastle);
     }
 
     @Deactivate
@@ -53,7 +53,7 @@ public class CastleIntegrationServiceComponent {
 
         JsFunctionRegistry jsFunctionRegistry = CastleIntegrationDataHolder.getInstance().getJsFunctionRegistry();
         if (jsFunctionRegistry != null) {
-            jsFunctionRegistry.deRegister(JsFunctionRegistry.Subsystem.SEQUENCE_HANDLER, "getRisk");
+            jsFunctionRegistry.deRegister(JsFunctionRegistry.Subsystem.SEQUENCE_HANDLER, "getRiskFromCastle");
         }
     }
 

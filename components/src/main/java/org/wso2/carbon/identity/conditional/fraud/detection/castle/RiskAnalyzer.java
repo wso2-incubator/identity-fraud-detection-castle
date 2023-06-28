@@ -28,8 +28,8 @@ import org.wso2.carbon.identity.application.authentication.framework.config.mode
 @FunctionalInterface
 public interface RiskAnalyzer {
 
-    float getRisk(JsAuthenticationContext context, String successStatus, String apiSecret,
-                  JsNashornServletRequest request);
+    float getRiskFromCastle(JsAuthenticationContext context, String successStatus, String apiSecret,
+                            JsNashornServletRequest request);
 
 }
 
