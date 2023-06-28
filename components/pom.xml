@@ -22,13 +22,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.wso2.carbon.identity.conditional.fraud.detection.castle</groupId>
-        <artifactId>castle-integration</artifactId>
+        <artifactId>castle-fraud-detection</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>castle-wso2</artifactId>
+    <artifactId>org.wso2.carbon.identity.conditional.fraud.detection.castle</artifactId>
     <packaging>bundle</packaging>
-
 
     <dependencies>
         <dependency>
@@ -79,29 +78,24 @@
             <artifactId>okhttp</artifactId>
             <version>4.10.0</version>
         </dependency>
-<!--         https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib -->
+
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
             <version>1.6.20</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib-common -->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-common</artifactId>
             <version>1.6.20</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.squareup.okio/okio -->
         <dependency>
             <groupId>com.squareup.okio</groupId>
             <artifactId>okio</artifactId>
             <version>3.0.0-alpha.9</version>
         </dependency>
-
-
-
     </dependencies>
 
     <build>
@@ -149,10 +143,8 @@
                         <Import-Package>
                             org.osgi.service.component; version="${osgi.service.component.imp.pkg.version.range}",
                             org.apache.commons.logging; version="${commons-logging.osgi.version.range}",
-                            <!--                            org.apache.commons.collections; version="${commons-collections.wso2.osgi.version.range}",-->
                             org.wso2.carbon.identity.application.authentication.framework; version="${identity.framework.package.import.version.range}",
                             org.wso2.carbon.identity.application.authentication.framework.config.model.graph.js;  version="${identity.framework.package.import.version.range}",
-<!--                            okio; version="[2.8.0, 3.1.0)"-->
                             org.wso2.carbon.identity.application.authentication.framework.config.model.graph.js.nashorn; version="${carbon.identity.framework.version}"
                         </Import-Package>
                         <Embed-Dependency>
@@ -160,8 +152,6 @@
                             threetenbp;scope=compile|runtime;inline=false,
                             okhttp;scope=compile|runtime;inline=false,
                             okio;scope=compile|runtime;inline=false
-<!--                            kotlin-stdlib;scope=compile|runtime;inline=false,-->
-<!--                            kotlin-stdlib-common;scope=compile|runtime;inline=false-->
                         </Embed-Dependency>
                         <DynamicImport-Package>*</DynamicImport-Package>
                     </instructions>
@@ -239,5 +229,4 @@
         <carbon.identity.framework.version>5.25.42</carbon.identity.framework.version>
         <identity.framework.package.import.version.range>[5.14.0, 7.0.0)</identity.framework.package.import.version.range>
     </properties>
-
 </project>

@@ -22,13 +22,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.wso2.carbon.identity.conditional.fraud.detection.castle</groupId>
-    <artifactId>castle-integration</artifactId>
+    <artifactId>castle-fraud-detection</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>components</module>
     </modules>
-
 
     <build>
         <pluginManagement>
@@ -123,14 +122,9 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-
         <!-- maven plugin dependencies -->
         <maven.scr.plugin.version>1.24.0</maven.scr.plugin.version>
         <maven.bundle.plugin.version>2.4.0</maven.bundle.plugin.version>
         <maven.checkstyleplugin.version>3.1.0</maven.checkstyleplugin.version>
-
-        <!--include findbugs here -->
-
     </properties>
-
 </project>
