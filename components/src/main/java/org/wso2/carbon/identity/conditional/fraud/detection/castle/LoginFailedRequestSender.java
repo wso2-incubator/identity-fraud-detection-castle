@@ -36,7 +36,7 @@ public class LoginFailedRequestSender implements RequestSender {
 
     public CustomCastleResponse doRequest(User user, String castleRequestToken, CastleContext castleContext,
                                           String apiSecret) throws CastleSdkConfigurationException,
-                                          CastleApiInvalidRequestTokenException, CastleRuntimeException {
+            CastleApiInvalidRequestTokenException, CastleRuntimeException {
 
         Castle castle = null;
 
@@ -73,7 +73,6 @@ public class LoginFailedRequestSender implements RequestSender {
         } catch (CastleRuntimeException e) {
             throw e;
         }
-
     }
 
 }

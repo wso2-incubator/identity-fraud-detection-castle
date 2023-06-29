@@ -37,7 +37,7 @@ public class LoginSuccessRequestSender implements RequestSender {
 
     public CustomCastleResponse doRequest(User user, String castleRequestToken, CastleContext castleContext,
                                           String apiSecret) throws CastleSdkConfigurationException,
-                                          CastleApiInvalidRequestTokenException, CastleRuntimeException {
+            CastleApiInvalidRequestTokenException, CastleRuntimeException {
 
         Castle castle = null;
 
@@ -48,20 +48,20 @@ public class LoginSuccessRequestSender implements RequestSender {
             assert castle != null;
 
             CastleResponse response = castle.client().risk(ImmutableMap.builder()
-                            .put(RequestConstants.KEY_TYPE, RequestConstants.VALUE_LOGIN)
-                            .put(RequestConstants.KEY_STATUS, RequestConstants.VALUE_SUCCESS)
-                            .put(Castle.KEY_CONTEXT, ImmutableMap.builder()
-                                    .put(Castle.KEY_IP, castleContext.getIp())
-                                    .put(Castle.KEY_HEADERS, castleContext.getHeaders())
-                                    .build()
-                            )
-                            .put(Castle.KEY_USER, ImmutableMap.builder()
-                                    .put(RequestConstants.KEY_USER_ID, user.getId())
-                                    .put(RequestConstants.KEY_USER_EMAIL, user.getEmail())
-                                    .build()
-                            )
-                            .put(Castle.KEY_REQUEST_TOKEN, castleRequestToken)
+                    .put(RequestConstants.KEY_TYPE, RequestConstants.VALUE_LOGIN)
+                    .put(RequestConstants.KEY_STATUS, RequestConstants.VALUE_SUCCESS)
+                    .put(Castle.KEY_CONTEXT, ImmutableMap.builder()
+                            .put(Castle.KEY_IP, castleContext.getIp())
+                            .put(Castle.KEY_HEADERS, castleContext.getHeaders())
                             .build()
+                    )
+                    .put(Castle.KEY_USER, ImmutableMap.builder()
+                            .put(RequestConstants.KEY_USER_ID, user.getId())
+                            .put(RequestConstants.KEY_USER_EMAIL, user.getEmail())
+                            .build()
+                    )
+                    .put(Castle.KEY_REQUEST_TOKEN, castleRequestToken)
+                    .build()
             );
 
             CustomCastleResponse customCastleResponse = new CustomCastleResponse(response);
@@ -74,7 +74,6 @@ public class LoginSuccessRequestSender implements RequestSender {
         } catch (CastleRuntimeException e) {
             throw e;
         }
-
     }
 
 }

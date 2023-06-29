@@ -120,9 +120,18 @@ public class ParamSetter {
             userId = context.getContext().getSubject().getAuthenticatedSubjectIdentifier();
         }
 
-        this.userAgent = request.getWrapped().getWrapped().getHeader(RequestConstants.KEY_USER_AGENT);
-        this.host = request.getWrapped().getWrapped().getHeader(RequestConstants.KEY_HOSTNAME);
-        this.ip = IdentityUtil.getClientIpAddress(request.getWrapped().getWrapped());
+        if (request.getWrapped().getWrapped().getHeader(RequestConstants.KEY_USER_AGENT) != null) {
+            this.userAgent = request.getWrapped().getWrapped().getHeader(RequestConstants.KEY_USER_AGENT);
+        }
+
+        if (request.getWrapped().getWrapped().getHeader(RequestConstants.KEY_HOSTNAME) != null) {
+            this.host = request.getWrapped().getWrapped().getHeader(RequestConstants.KEY_HOSTNAME);
+        }
+
+        if (IdentityUtil.getClientIpAddress(request.getWrapped().getWrapped()) != null) {
+            this.ip = IdentityUtil.getClientIpAddress(request.getWrapped().getWrapped());
+        }
+
         this.tenantId = IdentityTenantUtil.getTenantId(context.getContext().getTenantDomain());
 
         if (request.getWrapped().getWrapped().getParameterMap()
