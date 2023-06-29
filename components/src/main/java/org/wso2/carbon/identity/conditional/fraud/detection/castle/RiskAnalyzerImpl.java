@@ -43,6 +43,11 @@ public class RiskAnalyzerImpl implements RiskAnalyzer {
     public float getRiskFromCastle(JsAuthenticationContext context, String successStatus, String apiSecret,
                                    JsNashornServletRequest request, boolean doPrintScores) {
 
+        if (context == null || successStatus == null || apiSecret == null || request == null) {
+            LOG.error(ErrorMessageConstants.ERROR_PARAMS_NOT_FOUND);
+            return ScoreConstants.DEFAULT_RISK_SCORE;
+        }
+
         RequestSender requestSender = null;
 
         if (successStatus.equals(RequestConstants.STATUS_SUCCESS)) {
