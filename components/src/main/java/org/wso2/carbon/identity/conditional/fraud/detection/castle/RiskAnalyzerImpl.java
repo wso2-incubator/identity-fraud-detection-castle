@@ -27,6 +27,7 @@ import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.identity.application.authentication.framework.config.model.graph.js.JsAuthenticationContext;
 import org.wso2.carbon.identity.application.authentication.framework.config.model.graph.js.nashorn.JsNashornServletRequest;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.ErrorMessageConstants;
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.RequestConstants;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.model.User;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.util.ParamSetter;
 
@@ -43,9 +44,9 @@ public class RiskAnalyzerImpl implements RiskAnalyzer {
 
         RequestSender requestSender = null;
 
-        if (successStatus.equals("success")) {
+        if (successStatus.equals(RequestConstants.STATUS_SUCCESS)) {
             requestSender = new LoginSuccessRequestSender();
-        } else if (successStatus.equals("fail")) {
+        } else if (successStatus.equals(RequestConstants.STATUS_FAIL)) {
             requestSender = new LoginFailedRequestSender();
         }
 

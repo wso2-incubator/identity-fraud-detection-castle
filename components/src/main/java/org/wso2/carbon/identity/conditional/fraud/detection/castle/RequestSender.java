@@ -31,7 +31,7 @@ public interface RequestSender {
 
     public CustomCastleResponse doRequest(User user, String castleRequestToken, CastleContext castleContext,
                                           String apiSecret) throws CastleSdkConfigurationException,
-                                          CastleApiInvalidRequestTokenException, CastleRuntimeException;
+            CastleApiInvalidRequestTokenException, CastleRuntimeException;
 
 }
 

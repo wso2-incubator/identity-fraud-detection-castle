@@ -29,7 +29,6 @@ import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.Cast
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.RequestConstants;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.model.User;
 
-
 /**
  * Class with the Castle request sending functionality for a successful login.
  */

@@ -34,6 +34,8 @@ public abstract class RequestConstants {
     public static final String VALUE_SUCCESS = "$succeeded";
     public static final String VALUE_FAIL = "$failed";
     public static final String URL_USER_STORE_EMAIL = "http://wso2.org/claims/emailaddress";
+    public static final String STATUS_SUCCESS = "SUCCESS";
+    public static final String STATUS_FAIL = "FAIL";
 
 }
 
