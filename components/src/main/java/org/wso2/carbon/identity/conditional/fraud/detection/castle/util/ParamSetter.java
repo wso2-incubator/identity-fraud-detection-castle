@@ -103,7 +103,7 @@ public class ParamSetter {
         UserStoreManager userStoreManager = realmService.getTenantUserRealm(tenantId).getUserStoreManager();
 
         if (!(userStoreManager instanceof UniqueIDUserStoreManager)) {
-            LOG.error(ErrorMessageConstants.ERROR_GETTING_USER_STORE);
+            throw new UserStoreException(ErrorMessageConstants.ERROR_GETTING_USER_STORE);
         }
 
         return (UniqueIDUserStoreManager) userStoreManager;
