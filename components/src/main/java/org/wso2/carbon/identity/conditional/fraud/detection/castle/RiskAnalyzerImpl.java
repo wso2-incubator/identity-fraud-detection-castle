@@ -28,6 +28,7 @@ import org.wso2.carbon.identity.application.authentication.framework.config.mode
 import org.wso2.carbon.identity.application.authentication.framework.config.model.graph.js.nashorn.JsNashornServletRequest;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.ErrorMessageConstants;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.RequestConstants;
+import org.wso2.carbon.identity.conditional.fraud.detection.castle.constant.ScoreConstants;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.model.User;
 import org.wso2.carbon.identity.conditional.fraud.detection.castle.util.ParamSetter;
 
@@ -73,7 +74,7 @@ public class RiskAnalyzerImpl implements RiskAnalyzer {
             LOG.error(ErrorMessageConstants.ERROR_CASTLE_DATA, e);
         }
 
-        return -1;
+        return ScoreConstants.DEFAULT_RISK_SCORE;
     }
 
 }

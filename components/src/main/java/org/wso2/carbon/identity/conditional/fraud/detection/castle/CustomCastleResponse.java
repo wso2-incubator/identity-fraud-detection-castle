@@ -31,10 +31,10 @@ public class CustomCastleResponse {
 
     private static final Log LOG = LogFactory.getLog(CustomCastleResponse.class);
     CastleResponse response;
-    private float riskScore;
-    private float accountAbuseScore;
-    private float accountTakeoverScore;
-    private float botScore;
+    private float riskScore = ScoreConstants.DEFAULT_RISK_SCORE;
+    private float accountAbuseScore = ScoreConstants.DEFAULT_RISK_SCORE;
+    private float accountTakeoverScore = ScoreConstants.DEFAULT_RISK_SCORE;
+    private float botScore = ScoreConstants.DEFAULT_RISK_SCORE;
 
     public CustomCastleResponse(CastleResponse response) {
 

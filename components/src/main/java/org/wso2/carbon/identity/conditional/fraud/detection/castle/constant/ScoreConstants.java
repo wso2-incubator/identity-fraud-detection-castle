@@ -34,6 +34,7 @@ public abstract class ScoreConstants {
     public static final String ACCOUNT_ABUSE_DISPLAY_NAME = "Account Abuse Risk Score: ";
     public static final String ACCOUNT_TAKEOVER_DISPLAY_NAME = "Account Takeover Risk Score: ";
     public static final String BOT_DISPLAY_NAME = "Bot Risk Score: ";
+    public static final int DEFAULT_RISK_SCORE = -1;
 
 }
 
