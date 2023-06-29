@@ -56,7 +56,6 @@ public class RiskAnalyzerImpl implements RiskAnalyzer {
         String reqToken = paramSetter.getRequestToken();
 
         try {
-
             CustomCastleResponse response = requestSender.doRequest(user, reqToken, castleContext, apiSecret);
 
             if (response != null) {
@@ -72,7 +71,7 @@ public class RiskAnalyzerImpl implements RiskAnalyzer {
             LOG.error(ErrorMessageConstants.ERROR_CASTLE_DATA, e);
         }
 
-        return 0;
+        return -1;
     }
 
 }
