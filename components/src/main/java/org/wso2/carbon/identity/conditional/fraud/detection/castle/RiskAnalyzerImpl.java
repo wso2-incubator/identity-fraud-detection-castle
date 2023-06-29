@@ -40,7 +40,7 @@ public class RiskAnalyzerImpl implements RiskAnalyzer {
     private static final Log LOG = LogFactory.getLog(RiskAnalyzerImpl.class);
 
     public float getRiskFromCastle(JsAuthenticationContext context, String successStatus, String apiSecret,
-                                   JsNashornServletRequest request) {
+                                   JsNashornServletRequest request, boolean doPrintScores) {
 
         RequestSender requestSender = null;
 
@@ -59,7 +59,9 @@ public class RiskAnalyzerImpl implements RiskAnalyzer {
             CustomCastleResponse response = requestSender.doRequest(user, reqToken, castleContext, apiSecret);
 
             if (response != null) {
-                response.displayRiskScores();
+                if (doPrintScores) {
+                    response.displayRiskScores();
+                }
                 return response.getRiskScore();
             }
 
