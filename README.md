@@ -18,7 +18,7 @@ castle_fraud_detection_public_key="CASTLE_PUBLIC_KEY"
 
 ```
 var riskScore = getRiskFromCastle(JsAuthenticationContext context, String successStatus, String apiSecret,
-                                   JsNashornServletRequest request, boolean doPrintScores) ;
+                                   JsNashornServletRequest request, boolean doPrintScores);
 ```
 
 Following is the description of the required parameters.
