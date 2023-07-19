@@ -4,7 +4,7 @@ Castle fraud detection connector for WSO2 Identity Server
 ## How to configure
 1. Build the project using `mvn clean install`
 2. Copy the built JAR artifact from `target` directory into `<IS_HOME>/repository/components/dropins`
-3. Create a Castle account and obtain the PUBLISHABLE API KEY from Profile>Configurations.
+3. Create a Castle account and obtain the `PUBLISHABLE API KEY` from `Profile` > `Configurations`.
 4. Add the following configuration to `<IS_HOME>/repository/conf/deployment.toml` file. Replace `CASTLE_PUBLIC_KEY` with the key obtained from the 3rd step.
 
 ```
